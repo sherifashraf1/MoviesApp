@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,7 +17,7 @@
 		E0B282A822FB3E8E00DF5545 /* Movie_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B282A722FB3E8E00DF5545 /* Movie_AppUITests.swift */; };
 		E0B282C722FB4A1400DF5545 /* MoviesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B282C522FB4A1400DF5545 /* MoviesListViewController.swift */; };
 		E0B282C822FB4A1400DF5545 /* MoviesListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0B282C622FB4A1400DF5545 /* MoviesListViewController.xib */; };
-		E0B282CB22FB63C500DF5545 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B282CA22FB63C500DF5545 /* MovieModel.swift */; };
+		E0B3FC9D22FB749D0075F09D /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B3FC9C22FB749D0075F09D /* MovieModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +60,7 @@
 		E0B282A922FB3E8E00DF5545 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0B282C522FB4A1400DF5545 /* MoviesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewController.swift; sourceTree = "<group>"; };
 		E0B282C622FB4A1400DF5545 /* MoviesListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoviesListViewController.xib; sourceTree = "<group>"; };
-		E0B282CA22FB63C500DF5545 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
+		E0B3FC9C22FB749D0075F09D /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +101,6 @@
 				BB76787B7B7A8159F14615D7 /* Pods-Movie AppUITests.debug.xcconfig */,
 				946276F31AA7D83F88418CD3 /* Pods-Movie AppUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -212,7 +211,7 @@
 		E0B282C922FB63A800DF5545 /* Store */ = {
 			isa = PBXGroup;
 			children = (
-				E0B282CA22FB63C500DF5545 /* MovieModel.swift */,
+				E0B3FC9C22FB749D0075F09D /* MovieModel.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -438,8 +437,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0B3FC9D22FB749D0075F09D /* MovieModel.swift in Sources */,
 				E0B2828822FB3E8D00DF5545 /* AppDelegate.swift in Sources */,
-				E0B282CB22FB63C500DF5545 /* MovieModel.swift in Sources */,
 				E0B282C722FB4A1400DF5545 /* MoviesListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

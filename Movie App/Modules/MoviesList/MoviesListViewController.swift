@@ -15,7 +15,6 @@ class MoviesListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
-        
         loadData()
         // Do any additional setup after loading the view.
     }
@@ -23,7 +22,7 @@ class MoviesListViewController: UIViewController {
     
     func loadData(){
         let params : [String : String] = [
-            "s" : "titanic",
+            "s"      : "titanic",
             "apikey" : "b52fc4a5"
         ]
         Alamofire.request("http://www.omdbapi.com", method: .get, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { (myResponseData) in

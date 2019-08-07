@@ -14,6 +14,7 @@ class MoviesListViewController: UIViewController {
     var tableMovies = [Movie]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Movies List"
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
         loadData()
         // Do any additional setup after loading the view.
@@ -53,10 +54,10 @@ extension MoviesListViewController : UITableViewDelegate , UITableViewDataSource
         let movie = tableMovies[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
         cell.textLabel?.text = movie.title
-        cell.textLabel?.textAlignment = .center
+     // cell.textLabel?.textAlignment = .center
         cell.textLabel?.font = UIFont(name: "verdana", size: 19)
         cell.selectionStyle = .none
         return cell
     }
-    
+        
 }

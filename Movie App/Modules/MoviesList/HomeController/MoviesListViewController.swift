@@ -16,10 +16,14 @@ class MoviesListViewController: UIViewController {
         super.viewDidLoad()
         title = "Movies List"
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
+        changeInstagramTitleAndSizeOnNavBar()
         loadData()
         // Do any additional setup after loading the view.
     }
     
+    func changeInstagramTitleAndSizeOnNavBar(){
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font : UIFont(name: "futura", size: 20 ) ?? "verdana"]
+    }
     
     func loadData(){
         let params : [String : String] = [
@@ -54,10 +58,18 @@ extension MoviesListViewController : UITableViewDelegate , UITableViewDataSource
         let movie = tableMovies[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
         cell.textLabel?.text = movie.title
-     // cell.textLabel?.textAlignment = .center
         cell.textLabel?.font = UIFont(name: "verdana", size: 19)
         cell.selectionStyle = .none
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let movie = tableMovies[indexPath.row]
+        let view = MovieDetailsViewController()
+        view.movie = movie
+        self.navigationController?.pushViewController(view, animated: true)
+        
+    }
+    
         
 }

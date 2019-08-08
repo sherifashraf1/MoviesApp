@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 
 class MovieDetailsViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView : UITableView!
     
     var movie : Movie?
@@ -31,16 +31,16 @@ class MovieDetailsViewController: UIViewController {
         tableView.registerNib(cell: MoviePosterCell.self)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
     }
-
+    
 }
 
 extension MovieDetailsViewController : UITableViewDelegate , UITableViewDataSource {
     
-     func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return MovieDetailsSection.allCases.count
     }
     
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let section = MovieDetailsSection.allCases[section]
         switch section {
         case .moviePoster :
@@ -51,7 +51,7 @@ extension MovieDetailsViewController : UITableViewDelegate , UITableViewDataSour
         }
     }
     
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = MovieDetailsSection.allCases[indexPath.section]
         switch section {
             
@@ -60,7 +60,6 @@ extension MovieDetailsViewController : UITableViewDelegate , UITableViewDataSour
             let url = URL(string: (movie?.poster)!)
             cell.posterImage.kf.indicatorType = .activity
             cell.posterImage.kf.setImage(with: url)
-            cell.posterImage.adjustsImageSizeForAccessibilityContentSizeCategory = true
             cell.selectionStyle = .none
             return cell
             
@@ -83,15 +82,17 @@ extension MovieDetailsViewController : UITableViewDelegate , UITableViewDataSour
             
         }
     }
-     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let section = MovieDetailsSection.allCases[indexPath.section]
-        switch section {
-        case .moviePoster:
-            return 350
-        default:
-            return 50
-        }
-    }
-
     
+
+func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    let section = MovieDetailsSection.allCases[indexPath.section]
+    switch section {
+    case .moviePoster:
+        return 350
+    default:
+        return 50
+    }
 }
+
+}
+

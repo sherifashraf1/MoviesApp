@@ -16,17 +16,17 @@ extension UITableViewCell {
         case movieYear
     }
     
-    func recieveMovieDetails(type : DetailsType , text : String){
+    func recieveMovieDetails(type : DetailsType , text : String?){
         switch type {
             
         case .movieTitle:
-            textLabel?.text = "Movie Title : \(text)"
+            textLabel?.text = "Movie Title : \(text ?? "")"
         case .movieImdbID:
-            textLabel?.text = "Movie imdbID : \(text)"
+            textLabel?.text = "Movie imdbID : \(text ?? "")"
         case .movieType:
-            textLabel?.text = "Movie Type : \(text)"
+            textLabel?.text = "Movie Type : \(text ?? "")"
         case .movieYear:
-            textLabel?.text = "Movie Year : \(text)"
+            textLabel?.text = "Movie Year : \(text ?? "")"
             
         }
     }

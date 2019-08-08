@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import Kingfisher
 
-class MovieDetailsViewController: UITableViewController {
+class MovieDetailsViewController: UIViewController {
+
+    @IBOutlet weak var tableView : UITableView!
     
     var movie : Movie?
     
-    enum MovieDetailsSection : CaseIterable { 
+    enum MovieDetailsSection : CaseIterable {
         case moviePoster
         case movieDetails
     }
@@ -28,15 +31,16 @@ class MovieDetailsViewController: UITableViewController {
         tableView.registerNib(cell: MoviePosterCell.self)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
     }
-    
+
 }
 
-extension MovieDetailsViewController {
-    override func numberOfSections(in tableView: UITableView) -> Int {
+extension MovieDetailsViewController : UITableViewDelegate , UITableViewDataSource {
+    
+     func numberOfSections(in tableView: UITableView) -> Int {
         return MovieDetailsSection.allCases.count
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let section = MovieDetailsSection.allCases[section]
         switch section {
         case .moviePoster :
@@ -47,12 +51,16 @@ extension MovieDetailsViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = MovieDetailsSection.allCases[indexPath.section]
         switch section {
+            
         case .moviePoster:
             let cell = tableView.dequeue() as MoviePosterCell
-            cell.posterImage.image = UIImage(named: (movie?.poster!)!)
+            let url = URL(string: (movie?.poster)!)
+            cell.posterImage.kf.indicatorType = .activity
+            cell.posterImage.kf.setImage(with: url)
+            cell.posterImage.adjustsImageSizeForAccessibilityContentSizeCategory = true
             cell.selectionStyle = .none
             return cell
             
@@ -62,20 +70,20 @@ extension MovieDetailsViewController {
             
             switch movieDetailsType{
             case .title :
-                cell.recieveMovieDetails(type: .movieTitle, text: movie?.title ?? "")
+                cell.recieveMovieDetails(type: .movieTitle, text: movie?.title)
             case .imdbID :
-                cell.recieveMovieDetails(type: .movieImdbID, text: movie?.imdbID ?? "")
+                cell.recieveMovieDetails(type: .movieImdbID, text: movie?.imdbID)
             case .type:
-                cell.recieveMovieDetails(type: .movieType, text: (movie?.type.map { $0.rawValue })!)
+                cell.recieveMovieDetails(type: .movieType, text: movie?.type.map { $0.rawValue })
             case .year:
-                cell.recieveMovieDetails(type: .movieYear, text: movie?.year ?? "")
+                cell.recieveMovieDetails(type: .movieYear, text: movie?.year)
             }
             cell.selectionStyle = .none
             return cell
             
         }
     }
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let section = MovieDetailsSection.allCases[indexPath.section]
         switch section {
         case .moviePoster:
@@ -84,4 +92,6 @@ extension MovieDetailsViewController {
             return 50
         }
     }
+
+    
 }
